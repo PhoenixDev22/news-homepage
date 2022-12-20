@@ -1,0 +1,19 @@
+@use '../abstracts/variables' as *;
+
+
+.skip-nav__link {
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    transform: translateY(-120%);
+    background-color: $red;
+    color: $white;
+    padding: .5em 1em;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: transform .35s ease-in-out;
+}
+.skip-nav__link:focus {
+    transform: translateY(0);
+    outline: none;
+}

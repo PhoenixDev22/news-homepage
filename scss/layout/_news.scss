@@ -1,0 +1,66 @@
+@use '../abstracts//variables' as *;
+@use '../abstracts/mixins' as *;
+
+// News Section
+.news {
+    background-color: $text;
+    margin: toRem(40) 0;
+    padding: toRem(30) toRem(22);
+    @include media(xl) {
+        max-width: toRem(336);
+        grid-area: y;
+        margin: 0;
+    } 
+}
+.news .flex-column {
+    @include media(md) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    @include media(xl) {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}
+.news__article{
+    @include flex($direction: column, $justify: flex-start, $align: flex-start);
+    width: 100%;
+    .sub__text {
+        color: $gray;
+        line-height: 1.6;
+        font-size: .935rem;
+    }
+}   
+.news__article:not(:nth-of-type(3)) {
+    margin-bottom: toRem(30);
+    @include media(md) {
+        margin-right: toRem(14);
+        margin-bottom: toRem(0);
+    }
+    @include media(xl) {
+        margin-right: 0;
+        margin-bottom: toRem(30);
+    }
+}
+.news__article:not(:nth-of-type(3)) .sub__text{
+    margin-bottom: toRem(30);
+    @include media(md) {
+        margin-bottom: 0;
+    }
+    @include media(xl) {
+        margin-bottom: toRem(30);
+    }
+}
+
+.news__article:not(:last-of-type){
+    border-bottom: 1px solid $gray;
+    @include media(md) {
+        border: none;
+    }
+    @include media(xl) {
+        border-bottom: 1px solid $gray;
+    }
+}
+
+
+     

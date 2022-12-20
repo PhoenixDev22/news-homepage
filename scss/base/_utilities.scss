@@ -1,0 +1,88 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/*  Visually hiding the element while keeping it accessible to assistive technologies */
+.sr-only {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+}
+.container {
+    padding-left: $space-sm;
+    padding-right: $space-sm;
+    margin-right: auto;
+    margin-left: auto;
+
+    @include media(md) {
+        max-width: toRem(750);
+    }
+    @include media(lg) {
+        max-width: toRem(920);
+    }
+    @include media(xl) {
+        max-width: toRem(1110);
+    }
+}
+main .container {
+    @include media(xl) {
+        display: grid;
+        grid-auto-columns: 1fr;
+        grid-template-areas: 
+        "x x y"
+        "z z z"
+        ;
+        .hero {
+            margin-bottom: toRem(66);
+            margin-right: toRem(30);
+        }
+        .news {
+            margin-bottom: toRem(66)
+        }
+    }
+}
+@supports(gap: 20px 30px){
+    main .container {
+        @include media(xl) {
+            gap: toRem(66) toRem(30);
+            .hero {
+                margin-bottom: 0;
+                margin-right: 0;
+            }
+            .news {
+                margin-bottom: 0;
+            }
+        }
+    }  
+}
+
+.flex-column {
+    @include flex($direction: column, $justify:flex-start, $align: flex-start);   
+}
+
+.row {
+    @include flex($direction: column-reverse, $justify:flex-start, $align: flex-start);
+    .hero__image{
+        margin-bottom: toRem(30);
+    }
+    @include media(md) {
+        align-items: center;
+    }
+}
+
+.overflow {
+    overflow: hidden
+}
+
+.resize-animation-stopper * {
+    animation: none !important;
+    transition: none !important;
+}
+

@@ -1,0 +1,73 @@
+@use '../abstracts//variables' as *;
+@use '../abstracts/mixins' as *;
+
+.hero {
+    @include media(xl) {
+        grid-area: x;
+    } 
+}
+
+.hero__content > *{
+    @include media(md) {
+        width: 100%
+    }
+}
+
+.hero__content {
+    @include flex($direction: column, $justify:flex-start, $align: flex-start);
+    max-width: toRem(375);
+
+    .header-1 {
+        margin-bottom: toRem(20);
+    }
+    
+    @include media(md){
+        max-width: toRem(500);
+        text-align: center;
+    }
+    @include media(lg) {
+        @include flex($direction: row, $justify: space-between, $align: center);
+        max-width: unset;
+        width: 100%;
+        text-align: left;
+    }
+    
+    & > *{
+        @include media(lg) {
+            max-width: 400px;
+        }
+    }
+}
+
+.hero__text {
+    font-size: 1rem;
+    color: hsl(236deg, 13%, 42%);
+    line-height: 1.5;
+    margin-bottom: toRem(26);
+    @include media(lg) {
+        margin-bottom: toRem(36);
+    }
+}
+
+.hero__link {
+    display: inline-block;
+    padding: toRem(14) toRem(34);
+    color: $white;
+    background-color: $red;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 700;
+    font-size: $fs-300;
+    margin-bottom: toRem(20);
+    transition: .35s ease-in-out;
+    &:where(:hover, :focus-visible){
+        background-color: $text;
+        color: $background;
+    }
+    &:where(:focus) {
+        outline: none;
+    }
+    @include media(lg) {
+        margin-bottom: 0;
+    }
+}

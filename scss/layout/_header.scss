@@ -1,0 +1,155 @@
+@use '../abstracts//variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* Body */
+body {
+    font-family: $main-font;
+    background-color: $background;
+    text-align: left;
+}
+
+/* Header */
+.header {
+    position: relative;
+}
+
+.header[data-open]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba($color: black, $alpha: .6);
+    z-index: 2;
+}
+
+.header_nav {
+    padding: toRem(24) 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: toRem(20);
+    @include media(lg) {
+        padding: toRem(40) 0;
+    }
+    @include media(xl) {
+        padding: toRem(80) 0 toRem(58);
+    }
+}
+
+.header__logo-link {
+    position: relative;
+    z-index: 9;
+    padding: 0.1em;
+    transition: box-shadow .35s ease-in-out;
+    &:where(:focus-visible, :hover) {
+        box-shadow: 0 0 0 .15em $background,
+                    0 0 0 .45em $red;
+    }
+    &:where(:focus) {
+        outline: none;
+    }
+}
+
+.toggle-btn {
+    border: none;
+    background-color: transparent;
+    padding: .1em;
+    position: relative;
+    z-index: 10;
+    transition: .35s ease-in-out;
+    @include media(lg) {
+        display: none;
+    }
+    &:where(:focus-visible, :hover) {
+        box-shadow: 0 0 0 .15em $background,
+                    0 0 0 .45em $red;   
+    }   
+}
+
+.toggle-btn svg {
+    pointer-events: none;
+}
+
+.close-icon{
+    display: none
+}
+
+.toggle-btn[data-open] .menu-icon{
+    display: none;
+}
+
+.toggle-btn[data-open] .close-icon{
+    display: block;   
+}
+
+.navigation{
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: scale(0,1);
+    background-color: $background;
+    width: 80%;
+    max-width: toRem(260);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: toRem(130) toRem(22) toRem(25);
+    z-index: 9;
+    transform-origin: right;
+    transition: .35s ease;
+
+    @include media(lg) {
+        position: unset;
+        min-height: unset;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: row;
+        transform: none;
+        padding: 0;
+        width: unset;
+        max-width: unset;
+        flex: 1;
+    }
+}
+
+.navigation[data-open]{
+    transform: scale(1,1);
+    transition: .35s ease;
+}
+
+.header__nav-link{
+    text-decoration: none;
+    color: $dark;
+    font-size: $fs-300;
+    padding: toRem(15) toRem(22);
+    width: 100%;
+    display: inline-block;
+    transition: all .35s ease-in-out;
+    &:last-of-type {
+        @include media(lg) {
+            padding: toRem(15) 0 toRem(15) toRem(22);
+        }
+    }
+      
+    &:hover {
+        color: $red;
+        padding-left: toRem(30);
+        font-weight: 700;
+        @include media(lg) {
+            padding-left: toRem(22);
+            font-weight: 400;
+        }
+    }
+    &:where(:focus-visible) {
+        box-shadow: 0 0 0 .15em $background,
+                    0 0 0 .45em $red;
+    }
+    &:where(:focus) {
+        outline: none
+    }
+}

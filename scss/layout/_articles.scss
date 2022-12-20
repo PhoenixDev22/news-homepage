@@ -1,0 +1,81 @@
+@use '../abstracts//variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Articles
+.articles {
+    justify-content: space-between;
+
+    @include media(lg) {
+        grid-area: z;
+    }
+}
+
+.articles .flex-column {
+    @include media(md) {
+        @include flex($direction:row, $justify: space-between, $align: center);
+        flex-wrap: wrap;
+    }
+    @include media(lg) {
+        align-items: flex-start;
+    }
+}
+
+.featured__article {
+    margin-bottom: toRem(20);
+    @include media(xl) {
+        margin-bottom: 0;
+    }
+}
+.featured__article:not(:last-of-type) {
+    @include media(md) {
+        margin-right: toRem(20);
+    }
+}
+
+
+
+.featured__article {
+    @include flex($direction:row, $justify: space-between, $align: flex-end);
+    position: relative;
+    img {
+        max-width: toRem(100);
+        margin-right: toRem(20);
+    }
+    .sub__text {
+        color: $dark;
+        line-height: 1.6;
+        font-size: .83rem;
+    }
+}
+.featured__article::before{
+    content: '';
+    top: 0;
+    left: toRem(126);
+    position: absolute;
+    width: toRem(40);
+    height: toRem(40);
+    color:$gray;
+    @include flex($direction:row, $justify: center, $align: center);
+    font-size: toRem(40);
+    font-weight: 800;
+    line-height: 1;
+}
+
+.featured__article:first-of-type::before{
+    content: '01'
+}
+
+.featured__article:nth-of-type(2)::before{
+    content: '02'
+}
+
+.featured__article:nth-of-type(3)::before{
+    content: '03'
+}
+.stack {
+    max-width: toRem(220);
+    @include flex($direction:column, $justify: flex-end, $align: flex-start);
+    .header-4{
+        margin-bottom: toRem(12);
+    }
+}

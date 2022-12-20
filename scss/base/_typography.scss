@@ -1,0 +1,39 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+
+.header-1 {
+    font-size: toRem(40);
+    line-height: 1;
+    font-weight: 800;
+    @include media(md) {
+        font-size: toRem(56);
+    }
+}
+.header-2 {
+    color: $orange;
+    font-weight: 700;
+    font-size: $fs-600;
+    margin-bottom: toRem(35);
+}
+.header-3 {
+    color: $white;
+    display: inline-block;
+    font-weight: 700;
+    font-size: 1.22rem;
+    margin-bottom: toRem(10);
+    transition: .35s ease-in-out;
+    &:hover {
+        color: $red;  
+    }
+}
+.header-4 {
+    font-size: 1.125rem;
+    color: $text;
+    font-weight: 800;
+    transition: .35s ease-in-out;
+    margin-bottom: .75rem;
+    &:hover {
+        color: $red;  
+    }
+}

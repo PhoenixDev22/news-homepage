@@ -1,0 +1,30 @@
+@use '../abstracts//variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Footer
+footer {
+    text-align: center;
+    padding: .5rem;
+    margin-top: 1.25rem;
+    @include media(lg) {
+        margin-top: toRem(120);
+    }
+}
+
+.attribution{
+    color: $text;
+}
+
+.ft__link {
+    color: $dark;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: $fs-300;
+    &:where(:focus-visible, :hover) {
+        box-shadow: 0 0 0 .15em $background,
+                    0 0 0 .45em $red;   
+    }
+    &:where(:focus) {
+        outline: none;
+    }
+}

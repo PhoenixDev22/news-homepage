@@ -1,0 +1,26 @@
+@mixin media($breakpoint) {
+    
+    @if $breakpoint == md {
+        @media screen and (min-width: 768px) { @content };
+    }
+    @if $breakpoint == lg {
+        @media screen and (min-width: 992px) { @content };
+    }
+    @if $breakpoint == xl {
+        @media screen and (min-width: 1200px) { @content };
+    }
+}
+
+// flex properties
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $direction;
+}
+
+//Convert Px To Rem Mixin
+@function toRem($value) {
+    $remValue: ($value / 16) + rem;
+    @return $remValue;
+}

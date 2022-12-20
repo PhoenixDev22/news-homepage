@@ -1,0 +1,19 @@
+$orange: hsl(35, 77%, 62%);
+$red: hsl(5, 85%, 63%);
+
+$white: hsl(0, 0%, 100%);
+$background: hsl(36, 100%, 99%);;
+$gray: hsl(233, 8%, 79%);
+$dark: hsl(236, 13%, 42%);
+$text: hsl(240, 100%, 5%);
+
+ 
+/* https://utopia.fyi/type/calculator/  */
+
+/*    Font sizes    */
+$fs-300: clamp(0.83rem, calc(0.73rem + 0.52vw), 1.10rem);
+$fs-600: clamp(1.44rem, calc(1.16rem + 1.38vw), 2.15rem);
+/*      Spacing    */
+$space-sm: clamp(1.00rem, calc(0.85rem + 0.73vw), 1.38rem);
+
+$main-font: 'Inter', sans-serif;
